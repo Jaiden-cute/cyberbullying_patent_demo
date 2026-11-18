@@ -5,9 +5,35 @@ import json
 
 import pytest
 
+from src.demo_inputs import parse_chat_input
 from src.input_records import parse_messages
 from src.media_interface import resolve_media
 from src.pipeline import run_pipeline
+
+
+def test_user_chat_import_accepts_compact_json_and_uses_stable_scoped_ids():
+    rows = [
+        {"timestamp": "2026-10-01T19:00:00+08:00", "sender": "甲", "text": "你好", "message_id": "m1"},
+        {"timestamp": "2026-10-01T19:01:00+08:00", "sender": "乙", "text": "收到",
+         "reply_to_id": "m1", "mentions": ["甲"]},
+    ]
+    messages = parse_chat_input(json.dumps(rows).encode(), "chat.json", consent="synthetic", conversation="课堂")
+    reordered = parse_chat_input(json.dumps(rows[::-1]).encode(), "chat.json", consent="synthetic", conversation="课堂")
+    assert messages[0].message_id == "m1"
+    assert messages[1].message_id == reordered[0].message_id
+    assert messages[1].reply_to_message_id == "m1" and messages[1].mention_ids == ("甲",)
+    assert messages[0].reply_to_message_id is None
+
+
+def test_user_chat_csv_source_and_duplicate_display_error():
+    text = "timestamp,sender,text,message_id,platform,conversation_id,consent_status\n"
+    text += "2026-10-01T19:00:00+08:00,甲,你好,m1,local-test,c1,authorized\n"
+    text += "2026-10-01T19:01:00+08:00,乙,收到,m1,local-test,c2,authorized\n"
+    parsed = parse_chat_input(text.encode(), "chat.csv", consent="synthetic", conversation="未标注")
+    assert [message.conversation_id for message in parsed] == ["c1", "c2"]
+    assert all(message.consent_status == "authorized" for message in parsed)
+    with pytest.raises(ValueError, match="重复使用"):
+        parse_chat_input(text.replace(",c2,", ",c1,").encode(), "chat.csv", consent="synthetic", conversation="未标注")
 
 
 def test_message_csv_preserves_lists_ids_and_timestamp(messages):

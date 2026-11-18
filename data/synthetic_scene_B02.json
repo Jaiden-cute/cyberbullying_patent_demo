@@ -1,0 +1,28 @@
+[
+  {
+    "platform": "synthetic-user-demo",
+    "conversation_id": "virtual-class",
+    "message_id": "b02-attack",
+    "timestamp": "2026-10-11T19:00:00+08:00",
+    "sender_id": "同学甲",
+    "text": "你什么都不会，小组练习别参加",
+    "target_user_ids": [
+      "同学丙"
+    ],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-user-demo",
+    "conversation_id": "virtual-class",
+    "message_id": "b02-response",
+    "timestamp": "2026-10-11T19:01:00+08:00",
+    "sender_id": "同学丙",
+    "text": "刚才小组练习别参加那句没关系，他们就是开个玩笑😂",
+    "mention_ids": [
+      "同学甲"
+    ],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  }
+]

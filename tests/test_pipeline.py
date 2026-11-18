@@ -6,6 +6,19 @@ from src.cli import DEMO_MESSAGES, main, render_report
 from src.pipeline import run_pipeline
 
 
+def test_selected_subject_filters_events_without_changing_its_candidates(settings, messages):
+    original = messages[0]
+    second_attack = original.model_copy(update={
+        "message_id": "attack-other-person",
+        "target_user_ids": ("另一位同学",),
+    })
+    subject = (original.platform, original.target_user_ids[0])
+    baseline = run_pipeline(messages, settings)["events"][0]
+    result = run_pipeline([*messages, second_attack], settings, affected_subject=subject)
+    assert all(row["event"].victim_id == subject[1] for row in result["events"])
+    assert result["events"][0]["candidates"] == baseline["candidates"]
+
+
 def test_effective_explicit_and_implicit_replies_and_unrelated_message(settings, messages, features):
     report = run_pipeline(messages, settings, features=features)
     first, second, _ = report["events"]

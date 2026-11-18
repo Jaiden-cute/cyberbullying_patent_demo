@@ -73,6 +73,7 @@ def run_pipeline(
     runtime: Runtime | None = None,
     media_extractor: MediaFeatureExtractor | None = None,
     allowed_media_dir: Path | None = None,
+    affected_subject: tuple[str, str] | None = None,
 ) -> dict:
     runtime = runtime or Runtime()
     built = build_events(messages, settings.engineering_demo_default, reviews)
@@ -82,7 +83,9 @@ def run_pipeline(
     for message in ordered:
         by_sender[(*message.scope, message.sender_id)].append(message)
 
-    current_ids = {event.event_id for event in built.events}
+    events = [event for event in built.events
+              if affected_subject is None or (event.platform, event.victim_id) == affected_subject]
+    current_ids = {event.event_id for event in events}
     history = [item for item in previous_history if item.event.event_id not in current_ids]
     local_media: dict[MessageKey, LocalMedia] = {}
     invalid_media = []
@@ -98,7 +101,7 @@ def run_pipeline(
     matches_llm = []
     support_sources = []
     trained_output = False
-    for event in built.events:
+    for event in events:
         severity = evaluate_severity(event, tuple(record.event for record in history), settings)
         candidates = []
         during_event = []
@@ -243,5 +246,6 @@ def run_pipeline(
         ],
         "settings": settings,
         "inputs": {"messages": ordered, "test_features": features, "attack_reviews": reviews},
+        "affected_subject": affected_subject,
         "events": results,
     }

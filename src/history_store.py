@@ -128,9 +128,16 @@ class HistoryStore:
     def analyze(self, messages, settings, **options) -> dict:
         snapshot = self.snapshot()
         report = run_pipeline(messages, settings, previous_history=snapshot.events, **options)
+        current_ids = {row["event"].event_id for row in report["events"]}
+        saved_ids = {item.event.event_id for item in snapshot.events} - current_ids
+        for row in report["events"]:
+            recurrence = row["S5"]
+            used_ids = dict.fromkeys((*recurrence.recent_event_ids, *(item.event_id for item in recurrence.comparisons)))
+            row["S7"]["history_read_event_ids"] = [event_id for event_id in used_ids if event_id in saved_ids]
+            row["S7"]["same_run_history_event_ids"] = [event_id for event_id in used_ids if event_id not in saved_ids]
         processed = self.save(report, expected_revision=snapshot.revision)
         for row in report["events"]:
-            row["S7"] = {"status": "sqlite_saved", "persisted": True, "processed_utc": processed}
+            row["S7"].update(status="sqlite_saved", persisted=True, processed_utc=processed)
         return report
 
     def save(self, report: dict, *, expected_revision: int) -> str:
@@ -170,7 +177,7 @@ class HistoryStore:
               event.summary, event.synthetic, encode_record(event)))
         record = {
             **row,
-            "S7": {"status": "sqlite_saved", "persisted": True, "processed_utc": processed},
+            "S7": {**row["S7"], "status": "sqlite_saved", "persisted": True, "processed_utc": processed},
             "settings": report["settings"], "run_mode": report["run_mode"],
             "model_sources": report["model_sources"], "model_status": report["model_status"],
         }

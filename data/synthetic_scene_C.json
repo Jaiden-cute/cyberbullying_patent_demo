@@ -1,0 +1,15 @@
+[
+  {
+    "platform": "synthetic-user-demo",
+    "conversation_id": "virtual-class",
+    "message_id": "c-threat",
+    "timestamp": "2026-10-26T19:00:00+08:00",
+    "sender_id": "同学甲",
+    "text": "放学后我要打你",
+    "target_user_ids": [
+      "同学丙"
+    ],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  }
+]

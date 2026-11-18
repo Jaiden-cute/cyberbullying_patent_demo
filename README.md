@@ -1,6 +1,6 @@
 # 青少年网络欺凌回应关联原型
 
-本地 Python 原型按说明书具体实施方式处理事件、回应、八类掩饰表达、非语言证据、跨事件重复、风险和支持，保存可追溯的 SQLite 历史。界面可导入消息、人工修正事件类别和参与者、查看逐步计算、导出报告。内置三期事件和训练样本均为合成数据。
+本地 Python 原型按说明书具体实施方式处理事件、回应、掩饰表达、跨事件历史、风险和支持。用户界面提供聊天输入、对象选择、支持回复及历史回看。示例事件和训练样本均为合成数据。
 
 ## Windows PowerShell 启动
 
@@ -12,7 +12,15 @@ py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
 ```
 
-打开终端给出的本机 URL，默认端口 8501。项目已有训练分类头，首次部署可直接使用随附权重。仅运行规则演示时，安装 `requirements.txt` 即可，在界面选择「规则演示」。
+打开终端给出的本机 URL，默认端口 8501。首页为「用户交互」，默认通过规则演示给出支持回复。只录制 A、B、C 文本流程时可改装 `requirements.txt`，并跳过 `scripts.fetch_sbert`。如需真实分类器，在「分析设置」选择「模型辅助分析」，使用随附分类头和下载的编码器。
+
+## 用户端操作
+
+选择一个虚构场景、粘贴对话或导入 UTF-8 的 JSON / CSV，再选择「当前受影响对象」并点击「开始智能分析」。首页展示本次的共情回复、支持建议、来源及人工复核提示。既往共情回复在侧栏「历史记录」中查看。完整计算记录可用原有命令行导出。
+
+粘贴格式为「带时区的时间 | 发言人 | 消息内容」，一行一条，也支持原消息结构或简化的 JSON 数组。简化的 JSON / CSV 使用 `timestamp`、`sender`、`text`，可附 `message_id`、`reply_to_id`、`quoted_message_id`、`mentions`、`platform`、`conversation_id`、`target` 或对应的原字段。缺少 ID 时按消息内容和会话生成。消息确实指向所选对象但原文没有标注时，可展开「补充缺失的指向信息」逐条确认。
+
+录制 A / B 时，依次单独提交 `synthetic_scene_A_B01.json`、`synthetic_scene_B02.json`、`synthetic_scene_B03.json`，保留同一个 SQLite 路径。场景 C 使用 `synthetic_scene_C.json`。新一轮录屏可以给 `PATENT_HISTORY_DB` 指定新文件，原本的历史仍可以用旧路径打开。[逐镜头操作](docs/DEMO_SCRIPT.md)
 
 ## 数据、训练与测试
 
@@ -44,7 +52,7 @@ SQLite 默认由界面写入 `state/history.sqlite3`，可用 `PATENT_HISTORY_DB
 | MODEL | 实际 Sentence-BERT 和分类头输出八类概率，且所需 Qwen 关联判断及两阶段支持输出通过校验。训练来源仍显示为 `synthetic_training_demo`。 |
 | UNAVAILABLE | 显式要求模型且所需编码能力不可用。受影响公式保留未计算状态。 |
 
-Qwen 服务可选。复制 `.env.example` 为 `.env` 后配置服务地址和模型 ID，再在界面勾选「使用已配置的 Qwen 推理服务」，或以 `--mode trained` 运行 CLI。关联的 D/G 由同一次调用返回；请求失败或字段无效时相应项按说明书取 0 并附理由。支持由策略和回复两次调用生成，输出校验失败时展示安全模板。运行页的「参数与诊断」列出实际组件状态。
+Qwen 服务可选。复制 `.env.example` 为 `.env` 后配置服务地址和模型 ID，再在「分析设置」选择「模型辅助分析」并勾选「使用 AI 生成回复」，或以 `--mode trained` 运行 CLI。D/G 由同一次调用返回，字段无效时相应项按说明书取 0 并附理由。支持由策略和回复两次调用生成，输出校验失败时展示安全模板。命令行报告保留组件状态和原因。
 
 验收使用官方 Qwen2.5-7B-Instruct Q4_K_M 两片 GGUF、llama.cpp Windows x64 CPU 版和 `http://127.0.0.1:8765/v1`。在新设备使用相同部署时，先取得官方权重和 CPU 运行程序，将权重放入 `models/`，将程序解压到 `state/llama-cpp/`。将自己生成的本机服务密钥保存到 `state/qwen-api-key.txt`，然后在 `.env` 中填入同一个 `QWEN_API_KEY` 和上面的 `QWEN_BASE_URL`。权重、运行程序与密钥路径的说明见 [模型文件说明](models/README.md)。
 
@@ -52,10 +60,20 @@ Qwen 服务可选。复制 `.env.example` 为 `.env` 后配置服务地址和模
 .\state\llama-cpp\llama-server.exe -m models/qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf --host 127.0.0.1 --port 8765 --alias Qwen2.5-7B-Instruct --api-key-file state/qwen-api-key.txt -ngl 0 -t 8 -c 3072 -np 1
 ```
 
-启动本机服务后，在界面勾选 Qwen。首次拉取的仓库包含源码、合成数据、训练好的八类分类头和合成验收报告。公开基础模型按需下载，虚拟环境和运行数据在各自设备生成。
+启动本机服务后，在界面勾选「使用 AI 生成回复」。首次拉取的仓库包含源码、合成数据、训练好的八类分类头和合成验收报告。公开基础模型按需下载，虚拟环境和运行数据在各自设备生成。
 
 ## 音视频与录屏
 
-当前支持纯文本及结构化模拟观测，后者会按回应对象和时间窗验证，并逐特征展示 μ、σ、z、u、q 和 N。产品代码提供 `MediaFeatureExtractor` 接口与许可目录内路径校验。真实音视频提取器和授权素材联调待实施。展示模拟输入时，界面和报告均显示 `structured_test_features`。
+用户端仅分析文本。结构化模拟观测可用原有命令行进行公式测试。真实音视频特征提取和实际素材验证尚未完成。
+
+## 启动排错
+
+```powershell
+py -3.12 --version
+.\.venv\Scripts\python.exe -m pip check
+.\.venv\Scripts\python.exe -X utf8 -m pytest -q
+```
+
+如端口 8501 已占用，启动时可指定 `--server.port 8502`。模型不可用时，纯文本录屏可以选择「规则演示」。
 
 录屏步骤含点击位置、界面预期结果和逐段验收点。[录屏脚本](docs/DEMO_SCRIPT.md) · [实际验收记录](docs/VALIDATION.md) · [实现及工程口径](IMPLEMENTATION_NOTES.md) · [模型文件说明](models/README.md)
