@@ -11,10 +11,11 @@ from pydantic import ValidationError
 from .schemas import Message
 
 SCENE_FILES = {
-    "A / B 第 1 次 · 单次事件与无关话题": "synthetic_scene_A_B01.json",
-    "B 第 2 次 · 无回复 ID 的回应": "synthetic_scene_B02.json",
-    "B 第 3 次 · 跨事件历史比较": "synthetic_scene_B03.json",
-    "C · 严重威胁与安全优先": "synthetic_scene_C.json",
+    "第 1 次 · 群聊嘲讽与作业话题": "synthetic_scene_A_B01.json",
+    "第 2 次 · 小组练习被排斥": "synthetic_scene_B02.json",
+    "第 3 次 · 结合前两次事件研判": "synthetic_scene_B03.json",
+    "第 4 次 · 反复排斥与扬言公开住址": "synthetic_scene_elevated.json",
+    "安全优先 · 严重威胁": "synthetic_scene_C.json",
 }
 
 ALIASES = {

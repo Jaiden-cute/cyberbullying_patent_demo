@@ -10,6 +10,7 @@ __pycache__/
 !/reports/qwen_model_one_event.json
 !/reports/qwen_run.json
 !/reports/user_demo_validation.json
+!/reports/user_demo_ai_history.json
 !/reports/user_demo_model_validation.json
 !/reports/user_demo_tests.txt
 /.env

@@ -1,0 +1,47 @@
+[
+  {
+    "platform": "synthetic-user-demo",
+    "conversation_id": "virtual-class",
+    "message_id": "elevated-attack-1",
+    "timestamp": "2026-10-24T19:00:00+08:00",
+    "sender_id": "同学乙",
+    "text": "你这个笨蛋，我要把你的住址发到群里，别来我们组。",
+    "target_user_ids": ["同学丙"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-user-demo",
+    "conversation_id": "virtual-class",
+    "message_id": "elevated-attack-2",
+    "timestamp": "2026-10-24T19:01:00+08:00",
+    "sender_id": "同学乙",
+    "text": "我就把你的住址发到群里，你这个笨蛋别来我们组。",
+    "target_user_ids": ["同学丙"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-user-demo",
+    "conversation_id": "virtual-class",
+    "message_id": "elevated-attack-3",
+    "timestamp": "2026-10-24T19:02:00+08:00",
+    "sender_id": "同学乙",
+    "text": "你这个笨蛋，别来我们组，我会把你的住址发到群里。",
+    "target_user_ids": ["同学丙"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-user-demo",
+    "conversation_id": "virtual-class",
+    "message_id": "elevated-reply",
+    "timestamp": "2026-10-24T19:03:00+08:00",
+    "sender_id": "同学丙",
+    "text": "没事，刚才说要发住址的事，他们只是开个玩笑。我本来就不擅长，没关系😂。",
+    "reply_to_message_id": "elevated-attack-3",
+    "mention_ids": ["同学乙"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  }
+]

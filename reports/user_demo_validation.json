@@ -1,8 +1,9 @@
 {
-  "scope": "synthetic_demo",
+  "scope": "synthetic_rule_demo",
   "runs": [
     {
-      "input_file": "data/synthetic_scene_A_B01.json",
+      "input_file": "synthetic_scene_A_B01.json",
+      "analysis_seconds": 0.0,
       "analysis": {
         "report_schema_version": 2,
         "run_mode": "DEMO",
@@ -1207,14 +1208,15 @@
               "persisted": true,
               "history_read_event_ids": [],
               "same_run_history_event_ids": [],
-              "processed_utc": "2026-11-18T13:19:12.096637+00:00"
+              "processed_utc": "2026-11-18T14:30:02.970761+00:00"
             }
           }
         ]
       }
     },
     {
-      "input_file": "data/synthetic_scene_B02.json",
+      "input_file": "synthetic_scene_B02.json",
+      "analysis_seconds": 0.0,
       "analysis": {
         "report_schema_version": 2,
         "run_mode": "DEMO",
@@ -1452,7 +1454,7 @@
               "message_id": "b02-response",
               "sender_id": "同学丙",
               "timestamp": "2026-10-11T19:01:00+08:00",
-              "text": "刚才小组练习别参加那句没关系，他们就是开个玩笑😂",
+              "text": "同学甲，你刚才说我什么都不会，不让我参加小组练习。你这是在说我刚才做的那题吧？没关系😂。",
               "reply_to_message_id": null,
               "quoted_message_id": null,
               "mention_ids": [
@@ -1570,7 +1572,7 @@
                     "message_id": "b02-response",
                     "sender_id": "同学丙",
                     "timestamp": "2026-10-11T19:01:00+08:00",
-                    "text": "刚才小组练习别参加那句没关系，他们就是开个玩笑😂",
+                    "text": "同学甲，你刚才说我什么都不会，不让我参加小组练习。你这是在说我刚才做的那题吧？没关系😂。",
                     "reply_to_message_id": null,
                     "quoted_message_id": null,
                     "mention_ids": [
@@ -1586,13 +1588,13 @@
                   },
                   "L": 0,
                   "Q": 1,
-                  "S": 0.1303589814791738,
+                  "S": 0.20489872253216188,
                   "T": 0.9048374180359595,
                   "D": 1,
                   "G": 1,
                   "delta_t_minutes": 1.0,
-                  "logit": 0.9993332285965844,
-                  "A": 0.7309274632201403,
+                  "logit": 1.08878091786017,
+                  "A": 0.7481520909880768,
                   "tau_A": 0.7,
                   "effective": true,
                   "reason": "at_or_above_threshold",
@@ -1609,11 +1611,9 @@
                     "同学甲"
                   ],
                   "matched_reference_cues": [
-                    "刚才",
-                    "那句",
-                    "他们"
+                    "刚才"
                   ],
-                  "demo_topic_cosine": 0.38758511609996354,
+                  "demo_topic_cosine": 0.4467523126587924,
                   "llm_status": "demo_rule",
                   "llm_reasons": []
                 },
@@ -1632,25 +1632,22 @@
                   "non_model_score": [
                     0.0,
                     1.0,
-                    1.0,
+                    0.0,
                     0.0,
                     0.0,
                     1.0,
                     0.0,
                     0.0
                   ],
-                  "M": 0.375,
+                  "M": 0.25,
                   "inference_source": "rule_baseline",
                   "model_status": "trained_head_not_connected",
                   "matched_phrases": {
                     "否认": [],
                     "弱化": [
-                      "没关系",
-                      "开个玩笑"
+                      "没关系"
                     ],
-                    "合理化": [
-                      "他们就是"
-                    ],
+                    "合理化": [],
                     "自嘲": [],
                     "迎合": [],
                     "反向积极Emoji": [
@@ -1864,14 +1861,14 @@
                   "extractor_id": null
                 },
                 "S4": {
-                  "H": 0.13704889935377632,
+                  "H": 0.0935190113735096,
                   "branch": "text"
                 }
               }
             ],
             "excluded_during_event_message_keys": [],
             "S4": {
-              "H": 0.13704889935377632,
+              "H": 0.0935190113735096,
               "status": "calculated",
               "representative_reply_id": "b02-response",
               "representative_reply_key": [
@@ -1882,7 +1879,7 @@
               "pattern_vector": [
                 0.0,
                 1.0,
-                1.0,
+                0.0,
                 0.0,
                 0.0,
                 1.0,
@@ -1907,7 +1904,7 @@
               "denominator": null
             },
             "S6": {
-              "U": 0.23012939719499675,
+              "U": 0.21924692519993008,
               "score_level": "一般关注",
               "risk_level": "一般关注",
               "status": "calculated",
@@ -1947,14 +1944,15 @@
                 "evt-9029f6b0ce6168e48ab97d75583400d17895495f0c8ebd2860e5261d05abead3"
               ],
               "same_run_history_event_ids": [],
-              "processed_utc": "2026-11-18T13:19:12.161030+00:00"
+              "processed_utc": "2026-11-18T14:30:02.984908+00:00"
             }
           }
         ]
       }
     },
     {
-      "input_file": "data/synthetic_scene_B03.json",
+      "input_file": "synthetic_scene_B03.json",
+      "analysis_seconds": 0.0,
       "analysis": {
         "report_schema_version": 2,
         "run_mode": "DEMO",
@@ -2666,8 +2664,8 @@
                   "event_id": "evt-54a473dce284d63f71fa3cda5a5b1d028c93c6deae615265b7349aa8a62b46bb",
                   "dimension": 8,
                   "delta_days": 10.0,
-                  "Sim": 0.7745966692414834,
-                  "H_m": 0.13704889935377632,
+                  "Sim": 0.6324555320336758,
+                  "H_m": 0.0935190113735096,
                   "indicator": 0,
                   "decay_weight": 0.7165313105737893,
                   "weighted_contribution": 0.0,
@@ -2719,14 +2717,954 @@
                 "evt-54a473dce284d63f71fa3cda5a5b1d028c93c6deae615265b7349aa8a62b46bb"
               ],
               "same_run_history_event_ids": [],
-              "processed_utc": "2026-11-18T13:19:12.169198+00:00"
+              "processed_utc": "2026-11-18T14:30:02.998850+00:00"
             }
           }
         ]
       }
     },
     {
-      "input_file": "data/synthetic_scene_C.json",
+      "input_file": "synthetic_scene_elevated.json",
+      "analysis_seconds": 0.016,
+      "analysis": {
+        "report_schema_version": 2,
+        "run_mode": "DEMO",
+        "requested_runtime": "demo",
+        "demo_mode": true,
+        "inference_source": {
+          "event_detection": "rule_baseline_with_optional_manual_review",
+          "similarity": "character_ngram_cosine_baseline",
+          "D_and_G": [
+            "heuristic_fallback"
+          ],
+          "masking": [
+            "rule_baseline"
+          ],
+          "nonverbal": [
+            "no_nonverbal_input"
+          ],
+          "support": [
+            "safe_template"
+          ]
+        },
+        "model_status": {
+          "sentence_bert": "demo_mode",
+          "trained_mask_head": "demo_mode",
+          "qwen_2_5_7b_instruct": "demo_mode",
+          "audio_video_extraction": "interface_only"
+        },
+        "model_sources": {},
+        "input_sources": {
+          "messages": [
+            "synthetic"
+          ],
+          "consent_status": [
+            "synthetic"
+          ],
+          "nonverbal": [],
+          "event_reviews": null
+        },
+        "input_quality": {
+          "unresolved_attack_target_message_keys": [],
+          "unused_test_feature_reply_keys": [],
+          "media_path_message_keys": [],
+          "invalid_media_paths": []
+        },
+        "limitations": [
+          "事件识别使用规则基线和可选人工核对。",
+          "八类模型的训练数据为 synthetic_training_demo，仅用于核对原型流程。",
+          "结构化非语言测试观测用于公式验算。报告按候选回应记录实际来源。"
+        ],
+        "settings": {
+          "patent_example": {
+            "attack_similarity_tau_s": 0.7,
+            "time_tau_minutes": 10.0,
+            "association_tau_A": 0.7,
+            "masking_class_count": 8,
+            "baseline_min_valid_observations": 3,
+            "fusion_weights": {
+              "alpha": 0.5,
+              "beta": 0.3,
+              "gamma": 0.2
+            },
+            "history_tau_p": 30.0,
+            "history_mask_tau_H": 0.3,
+            "min_events_for_cross_event": 3,
+            "risk_thresholds": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          },
+          "engineering_demo_default": {
+            "first_event_window_minutes": 30.0,
+            "second_history_window_days": 30.0,
+            "event_topic_similarity_threshold": 0.65,
+            "candidate_window_minutes": 30.0,
+            "history_tau_p_unit": "days",
+            "repetition_basis": "within_event",
+            "similar_attack_window_days": 30.0,
+            "severity_weights": {
+              "targeting": 0.25,
+              "aggression": 0.25,
+              "repetition": 0.25,
+              "harm": 0.25
+            },
+            "association_weights": {
+              "b0": -2.0,
+              "b1": 1.5,
+              "b2": 0.8,
+              "b3": 1.2,
+              "b4": 0.6,
+              "b5": 0.8,
+              "b6": 0.7
+            },
+            "demo_topic_continuity_threshold": 0.15,
+            "masking_weights": [
+              0.125,
+              0.125,
+              0.125,
+              0.125,
+              0.125,
+              0.125,
+              0.125,
+              0.125
+            ],
+            "kappa_text": 0.5,
+            "history_n0": 3.0,
+            "risk_weights": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "epsilon": 1e-08,
+            "cosine_norm_floor": 1e-12,
+            "strict_model_mode": false,
+            "models": {
+              "embedding_model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+              "embedding_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+              "embedding_sha256": "eaa086f0ffee582aeb45b36e34cdd1fe2d6de2bef61f8a559a1bbc9bd955917b",
+              "embedding_path": "models/sbert-e8f8c211",
+              "mask_head_path": "models/mask_head.synthetic_training_demo.json",
+              "llm_model_id": "Qwen2.5-7B-Instruct",
+              "llm_timeout_seconds": 45.0,
+              "cpu_threads": 4,
+              "training": {
+                "seed": 20261001,
+                "epochs": 100,
+                "learning_rate": 0.015,
+                "weight_decay": 0.01,
+                "evaluation_threshold": 0.5
+              }
+            },
+            "baseline_window_minutes": 60.0,
+            "baseline_std_floor": 1e-06,
+            "nonverbal_features": {
+              "voice_rms": {
+                "modality": "audio",
+                "unit": "amplitude_unit",
+                "direction": -1,
+                "weight": 1.0
+              },
+              "speech_rate": {
+                "modality": "audio",
+                "unit": "characters_per_second",
+                "direction": -1,
+                "weight": 1.0
+              },
+              "fundamental_frequency": {
+                "modality": "audio",
+                "unit": "Hz",
+                "direction": 1,
+                "weight": 1.0
+              },
+              "pause_ratio": {
+                "modality": "audio",
+                "unit": "ratio",
+                "direction": 1,
+                "weight": 1.0
+              },
+              "pitch_perturbation": {
+                "modality": "audio",
+                "unit": "ratio",
+                "direction": 1,
+                "weight": 1.0
+              },
+              "sigh_count": {
+                "modality": "audio",
+                "unit": "count",
+                "direction": 1,
+                "weight": 1.0
+              },
+              "gaze_aversion_ratio": {
+                "modality": "video",
+                "unit": "ratio",
+                "direction": 1,
+                "weight": 1.0
+              },
+              "head_down_ratio": {
+                "modality": "video",
+                "unit": "ratio",
+                "direction": 1,
+                "weight": 1.0
+              },
+              "mouth_corner_position": {
+                "modality": "video",
+                "unit": "ratio",
+                "direction": -1,
+                "weight": 1.0
+              },
+              "facial_action_score": {
+                "modality": "video",
+                "unit": "score",
+                "direction": 1,
+                "weight": 1.0
+              }
+            },
+            "safety_phrases": {
+              "severe_threat": [
+                "我要打你",
+                "要杀了你",
+                "打死你"
+              ],
+              "self_harm_signal": [
+                "想伤害自己",
+                "我不想活了"
+              ]
+            }
+          }
+        },
+        "inputs": {
+          "messages": [
+            {
+              "platform": "synthetic-user-demo",
+              "conversation_id": "virtual-class",
+              "message_id": "elevated-attack-1",
+              "sender_id": "同学乙",
+              "timestamp": "2026-10-24T19:00:00+08:00",
+              "text": "你这个笨蛋，我要把你的住址发到群里，别来我们组。",
+              "reply_to_message_id": null,
+              "quoted_message_id": null,
+              "mention_ids": [],
+              "target_user_ids": [
+                "同学丙"
+              ],
+              "audio_path": null,
+              "video_path": null,
+              "media_start": null,
+              "media_end": null,
+              "source_type": "synthetic",
+              "consent_status": "synthetic"
+            },
+            {
+              "platform": "synthetic-user-demo",
+              "conversation_id": "virtual-class",
+              "message_id": "elevated-attack-2",
+              "sender_id": "同学乙",
+              "timestamp": "2026-10-24T19:01:00+08:00",
+              "text": "我就把你的住址发到群里，你这个笨蛋别来我们组。",
+              "reply_to_message_id": null,
+              "quoted_message_id": null,
+              "mention_ids": [],
+              "target_user_ids": [
+                "同学丙"
+              ],
+              "audio_path": null,
+              "video_path": null,
+              "media_start": null,
+              "media_end": null,
+              "source_type": "synthetic",
+              "consent_status": "synthetic"
+            },
+            {
+              "platform": "synthetic-user-demo",
+              "conversation_id": "virtual-class",
+              "message_id": "elevated-attack-3",
+              "sender_id": "同学乙",
+              "timestamp": "2026-10-24T19:02:00+08:00",
+              "text": "你这个笨蛋，别来我们组，我会把你的住址发到群里。",
+              "reply_to_message_id": null,
+              "quoted_message_id": null,
+              "mention_ids": [],
+              "target_user_ids": [
+                "同学丙"
+              ],
+              "audio_path": null,
+              "video_path": null,
+              "media_start": null,
+              "media_end": null,
+              "source_type": "synthetic",
+              "consent_status": "synthetic"
+            },
+            {
+              "platform": "synthetic-user-demo",
+              "conversation_id": "virtual-class",
+              "message_id": "elevated-reply",
+              "sender_id": "同学丙",
+              "timestamp": "2026-10-24T19:03:00+08:00",
+              "text": "没事，刚才说要发住址的事，他们只是开个玩笑。我本来就不擅长，没关系😂。",
+              "reply_to_message_id": "elevated-attack-3",
+              "quoted_message_id": null,
+              "mention_ids": [
+                "同学乙"
+              ],
+              "target_user_ids": [],
+              "audio_path": null,
+              "video_path": null,
+              "media_start": null,
+              "media_end": null,
+              "source_type": "synthetic",
+              "consent_status": "synthetic"
+            }
+          ],
+          "test_features": [],
+          "attack_reviews": []
+        },
+        "affected_subject": [
+          "synthetic-user-demo",
+          "同学丙"
+        ],
+        "events": [
+          {
+            "event": {
+              "event_id": "evt-a3dfdf9c964ba08b24823ed42d7a5e51eb6b5fefa03258c72f13a193c2f42796",
+              "platform": "synthetic-user-demo",
+              "conversation_id": "virtual-class",
+              "victim_id": "同学丙",
+              "initiators": [
+                "同学乙"
+              ],
+              "types": [
+                "辱骂",
+                "群体排斥",
+                "隐私传播"
+              ],
+              "start_time": "2026-10-24T11:00:00+00:00",
+              "end_time": "2026-10-24T11:02:00+00:00",
+              "message_ids": [
+                "elevated-attack-1",
+                "elevated-attack-2",
+                "elevated-attack-3"
+              ],
+              "content": "你这个笨蛋，我要把你的住址发到群里，别来我们组。；我就把你的住址发到群里，你这个笨蛋别来我们组。；你这个笨蛋，别来我们组，我会把你的住址发到群里。",
+              "summary": "2026-10-24T19:00:00+08:00 至 2026-10-24T19:02:00+08:00，同学乙针对同学丙实施了辱骂、群体排斥、隐私传播行为，事件主要内容为：你这个笨蛋，我要把你的住址发到群里，别来我们组。；我就把你的住址发到群里，你这个笨蛋别来我们组。；你这个笨蛋，别来我们组，我会把你的住址发到群里。。",
+              "attacks": [
+                {
+                  "message": {
+                    "platform": "synthetic-user-demo",
+                    "conversation_id": "virtual-class",
+                    "message_id": "elevated-attack-1",
+                    "sender_id": "同学乙",
+                    "timestamp": "2026-10-24T19:00:00+08:00",
+                    "text": "你这个笨蛋，我要把你的住址发到群里，别来我们组。",
+                    "reply_to_message_id": null,
+                    "quoted_message_id": null,
+                    "mention_ids": [],
+                    "target_user_ids": [
+                      "同学丙"
+                    ],
+                    "audio_path": null,
+                    "video_path": null,
+                    "media_start": null,
+                    "media_end": null,
+                    "source_type": "synthetic",
+                    "consent_status": "synthetic"
+                  },
+                  "finding": {
+                    "victim_id": "同学丙",
+                    "initiator_id": null,
+                    "types": [
+                      "辱骂",
+                      "群体排斥",
+                      "隐私传播"
+                    ],
+                    "g": 1,
+                    "a": 1,
+                    "h": 1
+                  },
+                  "source": "rule_baseline",
+                  "matched_phrases": [
+                    "笨蛋",
+                    "别来我们组",
+                    "把你的住址发到群里"
+                  ],
+                  "matched_topic_message_key": null,
+                  "topic_similarity": null
+                },
+                {
+                  "message": {
+                    "platform": "synthetic-user-demo",
+                    "conversation_id": "virtual-class",
+                    "message_id": "elevated-attack-2",
+                    "sender_id": "同学乙",
+                    "timestamp": "2026-10-24T19:01:00+08:00",
+                    "text": "我就把你的住址发到群里，你这个笨蛋别来我们组。",
+                    "reply_to_message_id": null,
+                    "quoted_message_id": null,
+                    "mention_ids": [],
+                    "target_user_ids": [
+                      "同学丙"
+                    ],
+                    "audio_path": null,
+                    "video_path": null,
+                    "media_start": null,
+                    "media_end": null,
+                    "source_type": "synthetic",
+                    "consent_status": "synthetic"
+                  },
+                  "finding": {
+                    "victim_id": "同学丙",
+                    "initiator_id": null,
+                    "types": [
+                      "辱骂",
+                      "群体排斥",
+                      "隐私传播"
+                    ],
+                    "g": 1,
+                    "a": 1,
+                    "h": 1
+                  },
+                  "source": "rule_baseline",
+                  "matched_phrases": [
+                    "笨蛋",
+                    "别来我们组",
+                    "把你的住址发到群里"
+                  ],
+                  "matched_topic_message_key": [
+                    "synthetic-user-demo",
+                    "virtual-class",
+                    "elevated-attack-1"
+                  ],
+                  "topic_similarity": 0.8888888888888888
+                },
+                {
+                  "message": {
+                    "platform": "synthetic-user-demo",
+                    "conversation_id": "virtual-class",
+                    "message_id": "elevated-attack-3",
+                    "sender_id": "同学乙",
+                    "timestamp": "2026-10-24T19:02:00+08:00",
+                    "text": "你这个笨蛋，别来我们组，我会把你的住址发到群里。",
+                    "reply_to_message_id": null,
+                    "quoted_message_id": null,
+                    "mention_ids": [],
+                    "target_user_ids": [
+                      "同学丙"
+                    ],
+                    "audio_path": null,
+                    "video_path": null,
+                    "media_start": null,
+                    "media_end": null,
+                    "source_type": "synthetic",
+                    "consent_status": "synthetic"
+                  },
+                  "finding": {
+                    "victim_id": "同学丙",
+                    "initiator_id": null,
+                    "types": [
+                      "辱骂",
+                      "群体排斥",
+                      "隐私传播"
+                    ],
+                    "g": 1,
+                    "a": 1,
+                    "h": 1
+                  },
+                  "source": "rule_baseline",
+                  "matched_phrases": [
+                    "笨蛋",
+                    "别来我们组",
+                    "把你的住址发到群里"
+                  ],
+                  "matched_topic_message_key": [
+                    "synthetic-user-demo",
+                    "virtual-class",
+                    "elevated-attack-2"
+                  ],
+                  "topic_similarity": 0.911111111111111
+                }
+              ],
+              "source": "rule_baseline"
+            },
+            "S1": {
+              "g": 1,
+              "a": 1,
+              "r": 1.0,
+              "h": 1,
+              "B": 1.0,
+              "repetition_basis": "within_event",
+              "repeat_count": 3,
+              "repetition_message_keys": [
+                [
+                  "synthetic-user-demo",
+                  "virtual-class",
+                  "elevated-attack-1"
+                ],
+                [
+                  "synthetic-user-demo",
+                  "virtual-class",
+                  "elevated-attack-2"
+                ],
+                [
+                  "synthetic-user-demo",
+                  "virtual-class",
+                  "elevated-attack-3"
+                ]
+              ],
+              "weights": [
+                0.25,
+                0.25,
+                0.25,
+                0.25
+              ]
+            },
+            "event_detector": "rule_baseline",
+            "event_quality": "rule_baseline_needs_review",
+            "candidates": [
+              {
+                "S2": {
+                  "message": {
+                    "platform": "synthetic-user-demo",
+                    "conversation_id": "virtual-class",
+                    "message_id": "elevated-reply",
+                    "sender_id": "同学丙",
+                    "timestamp": "2026-10-24T19:03:00+08:00",
+                    "text": "没事，刚才说要发住址的事，他们只是开个玩笑。我本来就不擅长，没关系😂。",
+                    "reply_to_message_id": "elevated-attack-3",
+                    "quoted_message_id": null,
+                    "mention_ids": [
+                      "同学乙"
+                    ],
+                    "target_user_ids": [],
+                    "audio_path": null,
+                    "video_path": null,
+                    "media_start": null,
+                    "media_end": null,
+                    "source_type": "synthetic",
+                    "consent_status": "synthetic"
+                  },
+                  "L": 1,
+                  "Q": 1,
+                  "S": 0.1413648216133285,
+                  "T": 0.9048374180359595,
+                  "D": 1,
+                  "G": 1,
+                  "delta_t_minutes": 1.0,
+                  "logit": 2.51254023675757,
+                  "A": 0.9250162746388875,
+                  "tau_A": 0.7,
+                  "effective": true,
+                  "reason": "at_or_above_threshold",
+                  "feature_sources": {
+                    "L": "scoped_reply_or_quote_metadata",
+                    "Q": "scoped_mention_metadata",
+                    "S": "character_ngram_cosine_baseline",
+                    "T": "utc_elapsed_minutes",
+                    "D": "heuristic_fallback",
+                    "G": "heuristic_fallback"
+                  },
+                  "matched_reference_ids": [
+                    "elevated-attack-3"
+                  ],
+                  "matched_mentions": [
+                    "同学乙"
+                  ],
+                  "matched_reference_cues": [
+                    "刚才",
+                    "他们"
+                  ],
+                  "demo_topic_cosine": 0.20654620306342275,
+                  "llm_status": "demo_rule",
+                  "llm_reasons": []
+                },
+                "S3_masking": {
+                  "labels": [
+                    "否认",
+                    "弱化",
+                    "合理化",
+                    "自嘲",
+                    "迎合",
+                    "反向积极Emoji",
+                    "回避",
+                    "话题转移"
+                  ],
+                  "p": null,
+                  "non_model_score": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  "M": 0.625,
+                  "inference_source": "rule_baseline",
+                  "model_status": "trained_head_not_connected",
+                  "matched_phrases": {
+                    "否认": [
+                      "没事"
+                    ],
+                    "弱化": [
+                      "没关系",
+                      "开个玩笑"
+                    ],
+                    "合理化": [
+                      "他们只是"
+                    ],
+                    "自嘲": [
+                      "我本来就"
+                    ],
+                    "迎合": [],
+                    "反向积极Emoji": [
+                      "😂"
+                    ],
+                    "回避": [],
+                    "话题转移": []
+                  },
+                  "model_version": null,
+                  "training_data_source": null,
+                  "unavailable_reason": null
+                },
+                "S3_nonverbal": {
+                  "N": null,
+                  "status": "unavailable",
+                  "inference_source": "no_nonverbal_input",
+                  "weighted_deviation_sum": 0.0,
+                  "available_weight_sum": 0.0,
+                  "features": [
+                    {
+                      "feature_name": "voice_rms",
+                      "modality": "audio",
+                      "unit": "amplitude_unit",
+                      "feature_value": null,
+                      "window_start": null,
+                      "window_end": null,
+                      "reference_values": [],
+                      "reference_observations": [],
+                      "mu": null,
+                      "sigma": null,
+                      "d": -1,
+                      "q": 0,
+                      "eta": 1.0,
+                      "z": null,
+                      "u": null,
+                      "status": "missing_current_observation",
+                      "current_unavailable_reason": null
+                    },
+                    {
+                      "feature_name": "speech_rate",
+                      "modality": "audio",
+                      "unit": "characters_per_second",
+                      "feature_value": null,
+                      "window_start": null,
+                      "window_end": null,
+                      "reference_values": [],
+                      "reference_observations": [],
+                      "mu": null,
+                      "sigma": null,
+                      "d": -1,
+                      "q": 0,
+                      "eta": 1.0,
+                      "z": null,
+                      "u": null,
+                      "status": "missing_current_observation",
+                      "current_unavailable_reason": null
+                    },
+                    {
+                      "feature_name": "fundamental_frequency",
+                      "modality": "audio",
+                      "unit": "Hz",
+                      "feature_value": null,
+                      "window_start": null,
+                      "window_end": null,
+                      "reference_values": [],
+                      "reference_observations": [],
+                      "mu": null,
+                      "sigma": null,
+                      "d": 1,
+                      "q": 0,
+                      "eta": 1.0,
+                      "z": null,
+                      "u": null,
+                      "status": "missing_current_observation",
+                      "current_unavailable_reason": null
+                    },
+                    {
+                      "feature_name": "pause_ratio",
+                      "modality": "audio",
+                      "unit": "ratio",
+                      "feature_value": null,
+                      "window_start": null,
+                      "window_end": null,
+                      "reference_values": [],
+                      "reference_observations": [],
+                      "mu": null,
+                      "sigma": null,
+                      "d": 1,
+                      "q": 0,
+                      "eta": 1.0,
+                      "z": null,
+                      "u": null,
+                      "status": "missing_current_observation",
+                      "current_unavailable_reason": null
+                    },
+                    {
+                      "feature_name": "pitch_perturbation",
+                      "modality": "audio",
+                      "unit": "ratio",
+                      "feature_value": null,
+                      "window_start": null,
+                      "window_end": null,
+                      "reference_values": [],
+                      "reference_observations": [],
+                      "mu": null,
+                      "sigma": null,
+                      "d": 1,
+                      "q": 0,
+                      "eta": 1.0,
+                      "z": null,
+                      "u": null,
+                      "status": "missing_current_observation",
+                      "current_unavailable_reason": null
+                    },
+                    {
+                      "feature_name": "sigh_count",
+                      "modality": "audio",
+                      "unit": "count",
+                      "feature_value": null,
+                      "window_start": null,
+                      "window_end": null,
+                      "reference_values": [],
+                      "reference_observations": [],
+                      "mu": null,
+                      "sigma": null,
+                      "d": 1,
+                      "q": 0,
+                      "eta": 1.0,
+                      "z": null,
+                      "u": null,
+                      "status": "missing_current_observation",
+                      "current_unavailable_reason": null
+                    },
+                    {
+                      "feature_name": "gaze_aversion_ratio",
+                      "modality": "video",
+                      "unit": "ratio",
+                      "feature_value": null,
+                      "window_start": null,
+                      "window_end": null,
+                      "reference_values": [],
+                      "reference_observations": [],
+                      "mu": null,
+                      "sigma": null,
+                      "d": 1,
+                      "q": 0,
+                      "eta": 1.0,
+                      "z": null,
+                      "u": null,
+                      "status": "missing_current_observation",
+                      "current_unavailable_reason": null
+                    },
+                    {
+                      "feature_name": "head_down_ratio",
+                      "modality": "video",
+                      "unit": "ratio",
+                      "feature_value": null,
+                      "window_start": null,
+                      "window_end": null,
+                      "reference_values": [],
+                      "reference_observations": [],
+                      "mu": null,
+                      "sigma": null,
+                      "d": 1,
+                      "q": 0,
+                      "eta": 1.0,
+                      "z": null,
+                      "u": null,
+                      "status": "missing_current_observation",
+                      "current_unavailable_reason": null
+                    },
+                    {
+                      "feature_name": "mouth_corner_position",
+                      "modality": "video",
+                      "unit": "ratio",
+                      "feature_value": null,
+                      "window_start": null,
+                      "window_end": null,
+                      "reference_values": [],
+                      "reference_observations": [],
+                      "mu": null,
+                      "sigma": null,
+                      "d": -1,
+                      "q": 0,
+                      "eta": 1.0,
+                      "z": null,
+                      "u": null,
+                      "status": "missing_current_observation",
+                      "current_unavailable_reason": null
+                    },
+                    {
+                      "feature_name": "facial_action_score",
+                      "modality": "video",
+                      "unit": "score",
+                      "feature_value": null,
+                      "window_start": null,
+                      "window_end": null,
+                      "reference_values": [],
+                      "reference_observations": [],
+                      "mu": null,
+                      "sigma": null,
+                      "d": 1,
+                      "q": 0,
+                      "eta": 1.0,
+                      "z": null,
+                      "u": null,
+                      "status": "missing_current_observation",
+                      "current_unavailable_reason": null
+                    }
+                  ],
+                  "extractor_id": null
+                },
+                "S4": {
+                  "H": 0.2890675858246523,
+                  "branch": "text"
+                }
+              }
+            ],
+            "excluded_during_event_message_keys": [],
+            "S4": {
+              "H": 0.2890675858246523,
+              "status": "calculated",
+              "representative_reply_id": "elevated-reply",
+              "representative_reply_key": [
+                "synthetic-user-demo",
+                "virtual-class",
+                "elevated-reply"
+              ],
+              "pattern_vector": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              "pattern_source": "rule_baseline",
+              "pattern_n": null,
+              "representative_reply_time": "2026-10-24T11:03:00+00:00"
+            },
+            "S5": {
+              "P": 0.2101768605768574,
+              "P_status": "available",
+              "F": 0.6321205588285577,
+              "n_i": 3,
+              "recent_event_ids": [
+                "evt-9029f6b0ce6168e48ab97d75583400d17895495f0c8ebd2860e5261d05abead3",
+                "evt-54a473dce284d63f71fa3cda5a5b1d028c93c6deae615265b7349aa8a62b46bb",
+                "evt-dc9baf89f029738ed0ae25e90b29cc1d60f01e8a93a65e2cae0ac6eb6c53ef55"
+              ],
+              "qualifying_pattern_count_including_current": 4,
+              "comparisons": [
+                {
+                  "event_id": "evt-9029f6b0ce6168e48ab97d75583400d17895495f0c8ebd2860e5261d05abead3",
+                  "dimension": 8,
+                  "delta_days": 23.0,
+                  "Sim": 0.912870929175277,
+                  "H_m": 0.3459540796503297,
+                  "indicator": 1,
+                  "decay_weight": 0.46455902036091146,
+                  "weighted_contribution": 0.42408242457362166,
+                  "status": "available"
+                },
+                {
+                  "event_id": "evt-54a473dce284d63f71fa3cda5a5b1d028c93c6deae615265b7349aa8a62b46bb",
+                  "dimension": 8,
+                  "delta_days": 13.0,
+                  "Sim": 0.6324555320336758,
+                  "H_m": 0.0935190113735096,
+                  "indicator": 0,
+                  "decay_weight": 0.6483443410015097,
+                  "weighted_contribution": 0.0,
+                  "status": "available"
+                },
+                {
+                  "event_id": "evt-dc9baf89f029738ed0ae25e90b29cc1d60f01e8a93a65e2cae0ac6eb6c53ef55",
+                  "dimension": 8,
+                  "delta_days": 3.0,
+                  "Sim": 1.0,
+                  "H_m": 0.28746749239934566,
+                  "indicator": 0,
+                  "decay_weight": 0.9048374180359595,
+                  "weighted_contribution": 0.0,
+                  "status": "available"
+                }
+              ],
+              "numerator": 0.42408242457362166,
+              "denominator": 2.0177407893983808
+            },
+            "S6": {
+              "U": 0.5328412513075168,
+              "score_level": "较高风险",
+              "risk_level": "较高风险",
+              "status": "calculated",
+              "safety_override": false,
+              "human_review_required": false,
+              "safety_source": "engineering_keyword_baseline",
+              "safety_signals": [],
+              "allowed_strategies": [
+                "证据保存",
+                "屏蔽或举报",
+                "可信成年人求助引导"
+              ],
+              "support_source": "safe_template",
+              "empathy_reply": "你可以先保存相关记录，并视情况屏蔽或向平台举报。也可以请家长、老师或其他可信任的成年人一起商量。",
+              "support_strategy": {
+                "goal": "较高风险",
+                "approach": [
+                  "证据保存",
+                  "屏蔽或举报",
+                  "可信成年人求助引导"
+                ],
+                "steps": [
+                  {
+                    "action": "证据保存",
+                    "text": "证据保存"
+                  },
+                  {
+                    "action": "屏蔽或举报",
+                    "text": "屏蔽或举报"
+                  },
+                  {
+                    "action": "可信成年人求助引导",
+                    "text": "可信成年人求助引导"
+                  }
+                ]
+              },
+              "support_status": "demo_mode"
+            },
+            "S7": {
+              "status": "sqlite_saved",
+              "persisted": true,
+              "history_read_event_ids": [
+                "evt-9029f6b0ce6168e48ab97d75583400d17895495f0c8ebd2860e5261d05abead3",
+                "evt-54a473dce284d63f71fa3cda5a5b1d028c93c6deae615265b7349aa8a62b46bb",
+                "evt-dc9baf89f029738ed0ae25e90b29cc1d60f01e8a93a65e2cae0ac6eb6c53ef55"
+              ],
+              "same_run_history_event_ids": [],
+              "processed_utc": "2026-11-18T14:30:03.010789+00:00"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "input_file": "synthetic_scene_C.json",
+      "analysis_seconds": 0.0,
       "analysis": {
         "report_schema_version": 2,
         "run_mode": "DEMO",
@@ -3061,12 +3999,13 @@
             "S5": {
               "P": null,
               "P_status": "current_pattern_unavailable",
-              "F": 0.6321205588285577,
-              "n_i": 3,
+              "F": 0.7364028618842733,
+              "n_i": 4,
               "recent_event_ids": [
                 "evt-9029f6b0ce6168e48ab97d75583400d17895495f0c8ebd2860e5261d05abead3",
                 "evt-54a473dce284d63f71fa3cda5a5b1d028c93c6deae615265b7349aa8a62b46bb",
-                "evt-dc9baf89f029738ed0ae25e90b29cc1d60f01e8a93a65e2cae0ac6eb6c53ef55"
+                "evt-dc9baf89f029738ed0ae25e90b29cc1d60f01e8a93a65e2cae0ac6eb6c53ef55",
+                "evt-a3dfdf9c964ba08b24823ed42d7a5e51eb6b5fefa03258c72f13a193c2f42796"
               ],
               "qualifying_pattern_count_including_current": 0,
               "comparisons": [],
@@ -3123,10 +4062,11 @@
               "history_read_event_ids": [
                 "evt-9029f6b0ce6168e48ab97d75583400d17895495f0c8ebd2860e5261d05abead3",
                 "evt-54a473dce284d63f71fa3cda5a5b1d028c93c6deae615265b7349aa8a62b46bb",
-                "evt-dc9baf89f029738ed0ae25e90b29cc1d60f01e8a93a65e2cae0ac6eb6c53ef55"
+                "evt-dc9baf89f029738ed0ae25e90b29cc1d60f01e8a93a65e2cae0ac6eb6c53ef55",
+                "evt-a3dfdf9c964ba08b24823ed42d7a5e51eb6b5fefa03258c72f13a193c2f42796"
               ],
               "same_run_history_event_ids": [],
-              "processed_utc": "2026-11-18T13:19:12.185615+00:00"
+              "processed_utc": "2026-11-18T14:30:03.019789+00:00"
             }
           }
         ]
@@ -3141,8 +4081,20 @@
       "started_utc": "2026-10-26T11:00:00+00:00",
       "synthetic": 1,
       "summary": "2026-10-26T19:00:00+08:00，同学甲针对同学丙实施了威胁行为，事件主要内容为：放学后我要打你。",
-      "processed_utc": "2026-11-18T13:19:12.185615+00:00",
+      "processed_utc": "2026-11-18T14:30:03.019789+00:00",
       "risk_level": "高风险",
+      "support_source": "safe_template",
+      "follow_up": null
+    },
+    {
+      "event_id": "evt-a3dfdf9c964ba08b24823ed42d7a5e51eb6b5fefa03258c72f13a193c2f42796",
+      "platform": "synthetic-user-demo",
+      "victim_id": "同学丙",
+      "started_utc": "2026-10-24T11:00:00+00:00",
+      "synthetic": 1,
+      "summary": "2026-10-24T19:00:00+08:00 至 2026-10-24T19:02:00+08:00，同学乙针对同学丙实施了辱骂、群体排斥、隐私传播行为，事件主要内容为：你这个笨蛋，我要把你的住址发到群里，别来我们组。；我就把你的住址发到群里，你这个笨蛋别来我们组。；你这个笨蛋，别来我们组，我会把你的住址发到群里。。",
+      "processed_utc": "2026-11-18T14:30:03.010789+00:00",
+      "risk_level": "较高风险",
       "support_source": "safe_template",
       "follow_up": null
     },
@@ -3153,10 +4105,10 @@
       "started_utc": "2026-10-21T11:00:00+00:00",
       "synthetic": 1,
       "summary": "2026-10-21T19:00:00+08:00，同学乙针对同学丙实施了嘲讽、群体排斥行为，事件主要内容为：你连这都不会，别参加小组练习。",
-      "processed_utc": "2026-11-18T13:19:12.169198+00:00",
+      "processed_utc": "2026-11-18T14:30:02.998850+00:00",
       "risk_level": "重点关注",
       "support_source": "safe_template",
-      "follow_up": null
+      "follow_up": "已把消息截图交给班主任，约好明天再沟通一次。"
     },
     {
       "event_id": "evt-54a473dce284d63f71fa3cda5a5b1d028c93c6deae615265b7349aa8a62b46bb",
@@ -3165,7 +4117,7 @@
       "started_utc": "2026-10-11T11:00:00+00:00",
       "synthetic": 1,
       "summary": "2026-10-11T19:00:00+08:00，同学甲针对同学丙实施了嘲讽行为，事件主要内容为：你什么都不会，小组练习别参加。",
-      "processed_utc": "2026-11-18T13:19:12.161030+00:00",
+      "processed_utc": "2026-11-18T14:30:02.984908+00:00",
       "risk_level": "一般关注",
       "support_source": "safe_template",
       "follow_up": null
@@ -3177,7 +4129,7 @@
       "started_utc": "2026-10-01T11:00:00+00:00",
       "synthetic": 1,
       "summary": "2026-10-01T19:00:00+08:00 至 2026-10-01T19:01:00+08:00，同学甲、同学乙针对同学丙实施了辱骂、嘲讽、群体排斥行为，事件主要内容为：你真是个笨蛋，连小组练习都不会；你真是个笨蛋，连小组练习都不会，别参加小组。",
-      "processed_utc": "2026-11-18T13:19:12.096637+00:00",
+      "processed_utc": "2026-11-18T14:30:02.970761+00:00",
       "risk_level": "重点关注",
       "support_source": "safe_template",
       "follow_up": null
