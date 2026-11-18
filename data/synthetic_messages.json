@@ -1,0 +1,114 @@
+[
+  {
+    "platform": "synthetic-chat",
+    "conversation_id": "class-demo",
+    "message_id": "oct01-attack-1",
+    "sender_id": "同学甲",
+    "timestamp": "2026-10-01T19:00:00+08:00",
+    "text": "你真是个笨蛋，连小组练习都不会",
+    "target_user_ids": ["同学丙"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-chat",
+    "conversation_id": "class-demo",
+    "message_id": "oct01-during-event",
+    "sender_id": "同学丙",
+    "timestamp": "2026-10-01T19:00:30+08:00",
+    "text": "刚才那句是什么意思？",
+    "reply_to_message_id": "oct01-attack-1",
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-chat",
+    "conversation_id": "class-demo",
+    "message_id": "oct01-attack-2",
+    "sender_id": "同学乙",
+    "timestamp": "2026-10-01T19:01:00+08:00",
+    "text": "你真是个笨蛋，连小组练习都不会，别参加小组",
+    "target_user_ids": ["同学丙"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-chat",
+    "conversation_id": "class-demo",
+    "message_id": "oct01-reply-1",
+    "sender_id": "同学丙",
+    "timestamp": "2026-10-01T19:02:00+08:00",
+    "text": "没事，刚才小组练习那句话，他们就是开个玩笑，哈哈我本来就笨😂",
+    "reply_to_message_id": "oct01-attack-1",
+    "mention_ids": ["同学甲"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-chat",
+    "conversation_id": "class-demo",
+    "message_id": "oct01-reply-2",
+    "sender_id": "同学丙",
+    "timestamp": "2026-10-01T19:03:00+08:00",
+    "text": "我没事，刚才小组练习那句没关系",
+    "quoted_message_id": "oct01-attack-2",
+    "mention_ids": ["同学乙"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-chat",
+    "conversation_id": "class-demo",
+    "message_id": "oct01-other-topic",
+    "sender_id": "同学丙",
+    "timestamp": "2026-10-01T19:05:00+08:00",
+    "text": "明天几点交数学作业？",
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-chat",
+    "conversation_id": "class-demo",
+    "message_id": "oct11-attack",
+    "sender_id": "同学甲",
+    "timestamp": "2026-10-11T19:00:00+08:00",
+    "text": "你什么都不会，小组练习别参加",
+    "target_user_ids": ["同学丙"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-chat",
+    "conversation_id": "class-demo",
+    "message_id": "oct11-reply",
+    "sender_id": "同学丙",
+    "timestamp": "2026-10-11T19:01:00+08:00",
+    "text": "刚才小组练习别参加那句没关系，他们就是开个玩笑😂",
+    "mention_ids": ["同学甲"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-chat",
+    "conversation_id": "class-demo",
+    "message_id": "oct21-attack",
+    "sender_id": "同学甲",
+    "timestamp": "2026-10-21T19:00:00+08:00",
+    "text": "放学后我要打你",
+    "target_user_ids": ["同学丙"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  },
+  {
+    "platform": "synthetic-chat",
+    "conversation_id": "class-demo",
+    "message_id": "oct21-reply",
+    "sender_id": "同学丙",
+    "timestamp": "2026-10-21T19:01:00+08:00",
+    "text": "我没事，刚才那句就是开个玩笑，哈哈我本来就这样😂",
+    "reply_to_message_id": "oct21-attack",
+    "mention_ids": ["同学甲"],
+    "source_type": "synthetic",
+    "consent_status": "synthetic"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "reply": {
+      "platform": "synthetic-chat",
+      "conversation_id": "class-demo",
+      "message_id": "oct01-reply-1"
+    },
+    "subject_id": "同学丙",
+    "source": "structured_test_features",
+    "features": [
+      {
+        "feature_name": "voice_rms",
+        "current": {
+          "window_start": "2026-10-01T19:01:59+08:00",
+          "window_end": "2026-10-01T19:02:04+08:00",
+          "value": 45
+        },
+        "references": [
+          {"window_start": "2026-10-01T18:35:00+08:00", "window_end": "2026-10-01T18:35:05+08:00", "value": 50},
+          {"window_start": "2026-10-01T18:45:00+08:00", "window_end": "2026-10-01T18:45:05+08:00", "value": 55},
+          {"window_start": "2026-10-01T18:55:00+08:00", "window_end": "2026-10-01T18:55:05+08:00", "value": 60}
+        ]
+      },
+      {
+        "feature_name": "head_down_ratio",
+        "current": {
+          "window_start": "2026-10-01T19:01:59+08:00",
+          "window_end": "2026-10-01T19:02:04+08:00",
+          "value": null,
+          "unavailable_reason": "simulated_no_face"
+        }
+      }
+    ]
+  }
+]

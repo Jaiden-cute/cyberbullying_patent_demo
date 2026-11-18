@@ -1,0 +1,61 @@
+patent_example:
+  attack_similarity_tau_s: 0.7
+  time_tau_minutes: 10
+  association_tau_A: 0.7
+  masking_class_count: 8
+  baseline_min_valid_observations: 3
+  fusion_weights: {alpha: 0.5, beta: 0.3, gamma: 0.2}
+  history_tau_p: 30
+  history_mask_tau_H: 0.3
+  min_events_for_cross_event: 3
+  risk_thresholds: [0.25, 0.50, 0.75]
+
+engineering_demo_default:
+  first_event_window_minutes: 30
+  second_history_window_days: 30
+  event_topic_similarity_threshold: 0.65
+  candidate_window_minutes: 30
+  history_tau_p_unit: days
+  repetition_basis: within_event
+  similar_attack_window_days: 30
+  severity_weights: {targeting: 0.25, aggression: 0.25, repetition: 0.25, harm: 0.25}
+  association_weights: {b0: -2.0, b1: 1.5, b2: 0.8, b3: 1.2, b4: 0.6, b5: 0.8, b6: 0.7}
+  demo_topic_continuity_threshold: 0.15
+  masking_weights: [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125]
+  kappa_text: 0.5
+  history_n0: 3.0
+  risk_weights: [0.25, 0.25, 0.25, 0.25]
+  epsilon: 1.0e-8
+  cosine_norm_floor: 1.0e-12
+  strict_model_mode: false
+  models:
+    embedding_model_id: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+    embedding_revision: e8f8c211226b894fcb81acc59f3b34ba3efd5f42
+    embedding_sha256: eaa086f0ffee582aeb45b36e34cdd1fe2d6de2bef61f8a559a1bbc9bd955917b
+    embedding_path: models/sbert-e8f8c211
+    mask_head_path: models/mask_head.synthetic_training_demo.json
+    llm_model_id: Qwen2.5-7B-Instruct
+    llm_timeout_seconds: 45
+    cpu_threads: 4
+    training:
+      seed: 20261001
+      epochs: 100
+      learning_rate: 0.015
+      weight_decay: 0.01
+      evaluation_threshold: 0.5
+  baseline_window_minutes: 60
+  baseline_std_floor: 1.0e-6
+  nonverbal_features:
+    voice_rms: {modality: audio, unit: amplitude_unit, direction: -1, weight: 1.0}
+    speech_rate: {modality: audio, unit: characters_per_second, direction: -1, weight: 1.0}
+    fundamental_frequency: {modality: audio, unit: Hz, direction: 1, weight: 1.0}
+    pause_ratio: {modality: audio, unit: ratio, direction: 1, weight: 1.0}
+    pitch_perturbation: {modality: audio, unit: ratio, direction: 1, weight: 1.0}
+    sigh_count: {modality: audio, unit: count, direction: 1, weight: 1.0}
+    gaze_aversion_ratio: {modality: video, unit: ratio, direction: 1, weight: 1.0}
+    head_down_ratio: {modality: video, unit: ratio, direction: 1, weight: 1.0}
+    mouth_corner_position: {modality: video, unit: ratio, direction: -1, weight: 1.0}
+    facial_action_score: {modality: video, unit: score, direction: 1, weight: 1.0}
+  safety_phrases:
+    severe_threat: ["我要打你", "要杀了你", "打死你"]
+    self_harm_signal: ["想伤害自己", "我不想活了"]

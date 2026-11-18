@@ -1,0 +1,1326 @@
+{
+  "report_schema_version": 2,
+  "run_mode": "MODEL",
+  "requested_runtime": "trained",
+  "demo_mode": true,
+  "inference_source": {
+    "event_detection": "rule_baseline_with_optional_manual_review",
+    "similarity": "sentence_bert",
+    "D_and_G": [
+      "qwen_2_5_7b_instruct"
+    ],
+    "masking": [
+      "trained_linear_head"
+    ],
+    "nonverbal": [
+      "no_nonverbal_input",
+      "structured_test_features"
+    ],
+    "support": [
+      "qwen_2_5_7b_instruct"
+    ]
+  },
+  "model_status": {
+    "sentence_bert": "available",
+    "trained_mask_head": "available",
+    "qwen_2_5_7b_instruct": "endpoint_available",
+    "audio_video_extraction": "interface_only"
+  },
+  "model_sources": {
+    "sentence_bert": {
+      "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "weights_sha256": "eaa086f0ffee582aeb45b36e34cdd1fe2d6de2bef61f8a559a1bbc9bd955917b",
+      "embedding_dimension": 384
+    },
+    "trained_mask_head": {
+      "artifact_format": "mask-head-linear-v1",
+      "model_version": "synthetic_training_demo-773e724a80f1f413ea5c",
+      "training_data_source": "synthetic_training_demo",
+      "label_order": [
+        "否认",
+        "弱化",
+        "合理化",
+        "自嘲",
+        "迎合",
+        "反向积极Emoji",
+        "回避",
+        "话题转移"
+      ],
+      "embedding_model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "embedding_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "embedding_sha256": "eaa086f0ffee582aeb45b36e34cdd1fe2d6de2bef61f8a559a1bbc9bd955917b",
+      "embedding_dimension": 384,
+      "joint_representation": "concat(e,r,abs(e-r))",
+      "training_csv_sha256": "3fe1e73ddd79c7638bff1668afc435853e047c0a9d13873f4b9d232aa5b4f09a",
+      "training_rows": 64,
+      "training_parameters": {
+        "seed": 20261001,
+        "epochs": 100,
+        "learning_rate": 0.015,
+        "weight_decay": 0.01,
+        "evaluation_threshold": 0.5,
+        "loss": "BCEWithLogitsLoss",
+        "optimizer": "AdamW"
+      }
+    },
+    "qwen_2_5_7b_instruct": {
+      "model_id": "Qwen2.5-7B-Instruct",
+      "transport": "openai_compatible"
+    }
+  },
+  "input_sources": {
+    "messages": [
+      "synthetic"
+    ],
+    "consent_status": [
+      "synthetic"
+    ],
+    "nonverbal": [
+      "structured_test_features"
+    ],
+    "event_reviews": null
+  },
+  "input_quality": {
+    "unresolved_attack_target_message_keys": [],
+    "unused_test_feature_reply_keys": [],
+    "media_path_message_keys": [],
+    "invalid_media_paths": []
+  },
+  "limitations": [
+    "事件识别使用规则基线和可选人工核对。",
+    "八类模型的训练数据为 synthetic_training_demo，仅用于核对原型流程。",
+    "结构化非语言测试观测用于公式验算。报告按候选回应记录实际来源。"
+  ],
+  "settings": {
+    "patent_example": {
+      "attack_similarity_tau_s": 0.7,
+      "time_tau_minutes": 10.0,
+      "association_tau_A": 0.7,
+      "masking_class_count": 8,
+      "baseline_min_valid_observations": 3,
+      "fusion_weights": {
+        "alpha": 0.5,
+        "beta": 0.3,
+        "gamma": 0.2
+      },
+      "history_tau_p": 30.0,
+      "history_mask_tau_H": 0.3,
+      "min_events_for_cross_event": 3,
+      "risk_thresholds": [
+        0.25,
+        0.5,
+        0.75
+      ]
+    },
+    "engineering_demo_default": {
+      "first_event_window_minutes": 30.0,
+      "second_history_window_days": 30.0,
+      "event_topic_similarity_threshold": 0.65,
+      "candidate_window_minutes": 30.0,
+      "history_tau_p_unit": "days",
+      "repetition_basis": "within_event",
+      "similar_attack_window_days": 30.0,
+      "severity_weights": {
+        "targeting": 0.25,
+        "aggression": 0.25,
+        "repetition": 0.25,
+        "harm": 0.25
+      },
+      "association_weights": {
+        "b0": -2.0,
+        "b1": 1.5,
+        "b2": 0.8,
+        "b3": 1.2,
+        "b4": 0.6,
+        "b5": 0.8,
+        "b6": 0.7
+      },
+      "demo_topic_continuity_threshold": 0.15,
+      "masking_weights": [
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125
+      ],
+      "kappa_text": 0.5,
+      "history_n0": 3.0,
+      "risk_weights": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "epsilon": 1e-08,
+      "cosine_norm_floor": 1e-12,
+      "strict_model_mode": false,
+      "models": {
+        "embedding_model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "embedding_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "embedding_sha256": "eaa086f0ffee582aeb45b36e34cdd1fe2d6de2bef61f8a559a1bbc9bd955917b",
+        "embedding_path": "models/sbert-e8f8c211",
+        "mask_head_path": "models/mask_head.synthetic_training_demo.json",
+        "llm_model_id": "Qwen2.5-7B-Instruct",
+        "llm_timeout_seconds": 45.0,
+        "cpu_threads": 4,
+        "training": {
+          "seed": 20261001,
+          "epochs": 100,
+          "learning_rate": 0.015,
+          "weight_decay": 0.01,
+          "evaluation_threshold": 0.5
+        }
+      },
+      "baseline_window_minutes": 60.0,
+      "baseline_std_floor": 1e-06,
+      "nonverbal_features": {
+        "voice_rms": {
+          "modality": "audio",
+          "unit": "amplitude_unit",
+          "direction": -1,
+          "weight": 1.0
+        },
+        "speech_rate": {
+          "modality": "audio",
+          "unit": "characters_per_second",
+          "direction": -1,
+          "weight": 1.0
+        },
+        "fundamental_frequency": {
+          "modality": "audio",
+          "unit": "Hz",
+          "direction": 1,
+          "weight": 1.0
+        },
+        "pause_ratio": {
+          "modality": "audio",
+          "unit": "ratio",
+          "direction": 1,
+          "weight": 1.0
+        },
+        "pitch_perturbation": {
+          "modality": "audio",
+          "unit": "ratio",
+          "direction": 1,
+          "weight": 1.0
+        },
+        "sigh_count": {
+          "modality": "audio",
+          "unit": "count",
+          "direction": 1,
+          "weight": 1.0
+        },
+        "gaze_aversion_ratio": {
+          "modality": "video",
+          "unit": "ratio",
+          "direction": 1,
+          "weight": 1.0
+        },
+        "head_down_ratio": {
+          "modality": "video",
+          "unit": "ratio",
+          "direction": 1,
+          "weight": 1.0
+        },
+        "mouth_corner_position": {
+          "modality": "video",
+          "unit": "ratio",
+          "direction": -1,
+          "weight": 1.0
+        },
+        "facial_action_score": {
+          "modality": "video",
+          "unit": "score",
+          "direction": 1,
+          "weight": 1.0
+        }
+      },
+      "safety_phrases": {
+        "severe_threat": [
+          "我要打你",
+          "要杀了你",
+          "打死你"
+        ],
+        "self_harm_signal": [
+          "想伤害自己",
+          "我不想活了"
+        ]
+      }
+    }
+  },
+  "inputs": {
+    "messages": [
+      {
+        "platform": "synthetic-chat",
+        "conversation_id": "class-demo",
+        "message_id": "oct01-attack-1",
+        "sender_id": "同学甲",
+        "timestamp": "2026-10-01T19:00:00+08:00",
+        "text": "你真是个笨蛋，连小组练习都不会",
+        "reply_to_message_id": null,
+        "quoted_message_id": null,
+        "mention_ids": [],
+        "target_user_ids": [
+          "同学丙"
+        ],
+        "audio_path": null,
+        "video_path": null,
+        "media_start": null,
+        "media_end": null,
+        "source_type": "synthetic",
+        "consent_status": "synthetic"
+      },
+      {
+        "platform": "synthetic-chat",
+        "conversation_id": "class-demo",
+        "message_id": "oct01-during-event",
+        "sender_id": "同学丙",
+        "timestamp": "2026-10-01T19:00:30+08:00",
+        "text": "刚才那句是什么意思？",
+        "reply_to_message_id": "oct01-attack-1",
+        "quoted_message_id": null,
+        "mention_ids": [],
+        "target_user_ids": [],
+        "audio_path": null,
+        "video_path": null,
+        "media_start": null,
+        "media_end": null,
+        "source_type": "synthetic",
+        "consent_status": "synthetic"
+      },
+      {
+        "platform": "synthetic-chat",
+        "conversation_id": "class-demo",
+        "message_id": "oct01-attack-2",
+        "sender_id": "同学乙",
+        "timestamp": "2026-10-01T19:01:00+08:00",
+        "text": "你真是个笨蛋，连小组练习都不会，别参加小组",
+        "reply_to_message_id": null,
+        "quoted_message_id": null,
+        "mention_ids": [],
+        "target_user_ids": [
+          "同学丙"
+        ],
+        "audio_path": null,
+        "video_path": null,
+        "media_start": null,
+        "media_end": null,
+        "source_type": "synthetic",
+        "consent_status": "synthetic"
+      },
+      {
+        "platform": "synthetic-chat",
+        "conversation_id": "class-demo",
+        "message_id": "oct01-reply-1",
+        "sender_id": "同学丙",
+        "timestamp": "2026-10-01T19:02:00+08:00",
+        "text": "没事，刚才小组练习那句话，他们就是开个玩笑，哈哈我本来就笨😂",
+        "reply_to_message_id": "oct01-attack-1",
+        "quoted_message_id": null,
+        "mention_ids": [
+          "同学甲"
+        ],
+        "target_user_ids": [],
+        "audio_path": null,
+        "video_path": null,
+        "media_start": null,
+        "media_end": null,
+        "source_type": "synthetic",
+        "consent_status": "synthetic"
+      },
+      {
+        "platform": "synthetic-chat",
+        "conversation_id": "class-demo",
+        "message_id": "oct01-reply-2",
+        "sender_id": "同学丙",
+        "timestamp": "2026-10-01T19:03:00+08:00",
+        "text": "我没事，刚才小组练习那句没关系",
+        "reply_to_message_id": null,
+        "quoted_message_id": "oct01-attack-2",
+        "mention_ids": [
+          "同学乙"
+        ],
+        "target_user_ids": [],
+        "audio_path": null,
+        "video_path": null,
+        "media_start": null,
+        "media_end": null,
+        "source_type": "synthetic",
+        "consent_status": "synthetic"
+      },
+      {
+        "platform": "synthetic-chat",
+        "conversation_id": "class-demo",
+        "message_id": "oct01-other-topic",
+        "sender_id": "同学丙",
+        "timestamp": "2026-10-01T19:05:00+08:00",
+        "text": "明天几点交数学作业？",
+        "reply_to_message_id": null,
+        "quoted_message_id": null,
+        "mention_ids": [],
+        "target_user_ids": [],
+        "audio_path": null,
+        "video_path": null,
+        "media_start": null,
+        "media_end": null,
+        "source_type": "synthetic",
+        "consent_status": "synthetic"
+      }
+    ],
+    "test_features": [
+      {
+        "reply": {
+          "platform": "synthetic-chat",
+          "conversation_id": "class-demo",
+          "message_id": "oct01-reply-1"
+        },
+        "subject_id": "同学丙",
+        "features": [
+          {
+            "feature_name": "voice_rms",
+            "current": {
+              "window_start": "2026-10-01T19:01:59+08:00",
+              "window_end": "2026-10-01T19:02:04+08:00",
+              "value": 45.0,
+              "unavailable_reason": null
+            },
+            "references": [
+              {
+                "window_start": "2026-10-01T18:35:00+08:00",
+                "window_end": "2026-10-01T18:35:05+08:00",
+                "value": 50.0,
+                "unavailable_reason": null
+              },
+              {
+                "window_start": "2026-10-01T18:45:00+08:00",
+                "window_end": "2026-10-01T18:45:05+08:00",
+                "value": 55.0,
+                "unavailable_reason": null
+              },
+              {
+                "window_start": "2026-10-01T18:55:00+08:00",
+                "window_end": "2026-10-01T18:55:05+08:00",
+                "value": 60.0,
+                "unavailable_reason": null
+              }
+            ]
+          },
+          {
+            "feature_name": "head_down_ratio",
+            "current": {
+              "window_start": "2026-10-01T19:01:59+08:00",
+              "window_end": "2026-10-01T19:02:04+08:00",
+              "value": null,
+              "unavailable_reason": "simulated_no_face"
+            },
+            "references": []
+          }
+        ],
+        "source": "structured_test_features"
+      }
+    ],
+    "attack_reviews": []
+  },
+  "events": [
+    {
+      "event": {
+        "event_id": "evt-db57974ac09b322037c4caabf6461c38c03a9c7c78bff7f9612e3c0ef335c3d7",
+        "platform": "synthetic-chat",
+        "conversation_id": "class-demo",
+        "victim_id": "同学丙",
+        "initiators": [
+          "同学甲",
+          "同学乙"
+        ],
+        "types": [
+          "辱骂",
+          "嘲讽",
+          "群体排斥"
+        ],
+        "start_time": "2026-10-01T11:00:00+00:00",
+        "end_time": "2026-10-01T11:01:00+00:00",
+        "message_ids": [
+          "oct01-attack-1",
+          "oct01-attack-2"
+        ],
+        "content": "你真是个笨蛋，连小组练习都不会；你真是个笨蛋，连小组练习都不会，别参加小组",
+        "summary": "2026-10-01T19:00:00+08:00 至 2026-10-01T19:01:00+08:00，同学甲、同学乙针对同学丙实施了辱骂、嘲讽、群体排斥行为，事件主要内容为：你真是个笨蛋，连小组练习都不会；你真是个笨蛋，连小组练习都不会，别参加小组。",
+        "attacks": [
+          {
+            "message": {
+              "platform": "synthetic-chat",
+              "conversation_id": "class-demo",
+              "message_id": "oct01-attack-1",
+              "sender_id": "同学甲",
+              "timestamp": "2026-10-01T19:00:00+08:00",
+              "text": "你真是个笨蛋，连小组练习都不会",
+              "reply_to_message_id": null,
+              "quoted_message_id": null,
+              "mention_ids": [],
+              "target_user_ids": [
+                "同学丙"
+              ],
+              "audio_path": null,
+              "video_path": null,
+              "media_start": null,
+              "media_end": null,
+              "source_type": "synthetic",
+              "consent_status": "synthetic"
+            },
+            "finding": {
+              "victim_id": "同学丙",
+              "initiator_id": null,
+              "types": [
+                "辱骂",
+                "嘲讽"
+              ],
+              "g": 1,
+              "a": 1,
+              "h": 0.5
+            },
+            "source": "rule_baseline",
+            "matched_phrases": [
+              "笨蛋",
+              "都不会"
+            ],
+            "matched_topic_message_key": null,
+            "topic_similarity": null
+          },
+          {
+            "message": {
+              "platform": "synthetic-chat",
+              "conversation_id": "class-demo",
+              "message_id": "oct01-attack-2",
+              "sender_id": "同学乙",
+              "timestamp": "2026-10-01T19:01:00+08:00",
+              "text": "你真是个笨蛋，连小组练习都不会，别参加小组",
+              "reply_to_message_id": null,
+              "quoted_message_id": null,
+              "mention_ids": [],
+              "target_user_ids": [
+                "同学丙"
+              ],
+              "audio_path": null,
+              "video_path": null,
+              "media_start": null,
+              "media_end": null,
+              "source_type": "synthetic",
+              "consent_status": "synthetic"
+            },
+            "finding": {
+              "victim_id": "同学丙",
+              "initiator_id": null,
+              "types": [
+                "辱骂",
+                "嘲讽",
+                "群体排斥"
+              ],
+              "g": 1,
+              "a": 1,
+              "h": 0.5
+            },
+            "source": "rule_baseline",
+            "matched_phrases": [
+              "笨蛋",
+              "都不会",
+              "别参加小组"
+            ],
+            "matched_topic_message_key": [
+              "synthetic-chat",
+              "class-demo",
+              "oct01-attack-1"
+            ],
+            "topic_similarity": 0.8804509063256237
+          }
+        ],
+        "source": "rule_baseline"
+      },
+      "S1": {
+        "g": 1,
+        "a": 1,
+        "r": 0.5,
+        "h": 0.5,
+        "B": 0.75,
+        "repetition_basis": "within_event",
+        "repeat_count": 2,
+        "repetition_message_keys": [
+          [
+            "synthetic-chat",
+            "class-demo",
+            "oct01-attack-1"
+          ],
+          [
+            "synthetic-chat",
+            "class-demo",
+            "oct01-attack-2"
+          ]
+        ],
+        "weights": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ]
+      },
+      "event_detector": "rule_baseline",
+      "event_quality": "rule_baseline_needs_review",
+      "candidates": [
+        {
+          "S2": {
+            "message": {
+              "platform": "synthetic-chat",
+              "conversation_id": "class-demo",
+              "message_id": "oct01-reply-1",
+              "sender_id": "同学丙",
+              "timestamp": "2026-10-01T19:02:00+08:00",
+              "text": "没事，刚才小组练习那句话，他们就是开个玩笑，哈哈我本来就笨😂",
+              "reply_to_message_id": "oct01-attack-1",
+              "quoted_message_id": null,
+              "mention_ids": [
+                "同学甲"
+              ],
+              "target_user_ids": [],
+              "audio_path": null,
+              "video_path": null,
+              "media_start": null,
+              "media_end": null,
+              "source_type": "synthetic",
+              "consent_status": "synthetic"
+            },
+            "L": 1,
+            "Q": 1,
+            "S": 0.5634905876009354,
+            "T": 0.9048374180359595,
+            "D": 0,
+            "G": 1,
+            "delta_t_minutes": 1.0,
+            "logit": 2.2190911559426985,
+            "A": 0.9019508509679494,
+            "tau_A": 0.7,
+            "effective": true,
+            "reason": "at_or_above_threshold",
+            "feature_sources": {
+              "L": "scoped_reply_or_quote_metadata",
+              "Q": "scoped_mention_metadata",
+              "S": "sentence_bert",
+              "T": "utc_elapsed_minutes",
+              "D": "qwen_2_5_7b_instruct",
+              "G": "qwen_2_5_7b_instruct"
+            },
+            "matched_reference_ids": [
+              "oct01-attack-1"
+            ],
+            "matched_mentions": [
+              "同学甲"
+            ],
+            "matched_reference_cues": [],
+            "demo_topic_cosine": null,
+            "llm_status": "available",
+            "llm_reasons": []
+          },
+          "S3_masking": {
+            "labels": [
+              "否认",
+              "弱化",
+              "合理化",
+              "自嘲",
+              "迎合",
+              "反向积极Emoji",
+              "回避",
+              "话题转移"
+            ],
+            "p": [
+              0.00968072991334998,
+              0.7192463190387891,
+              0.8417960752992891,
+              0.0034947324603976124,
+              0.00026920724671205203,
+              0.1255151304790366,
+              0.0014782721405608578,
+              0.0011767833563072739
+            ],
+            "non_model_score": null,
+            "M": 0.21283215624180532,
+            "inference_source": "trained_linear_head",
+            "model_status": "available",
+            "matched_phrases": {},
+            "model_version": "synthetic_training_demo-773e724a80f1f413ea5c",
+            "training_data_source": "synthetic_training_demo",
+            "unavailable_reason": null
+          },
+          "S3_nonverbal": {
+            "N": 0.9136623677067808,
+            "status": "available",
+            "inference_source": "structured_test_features",
+            "weighted_deviation_sum": 2.449489736783178,
+            "available_weight_sum": 1.0,
+            "features": [
+              {
+                "feature_name": "voice_rms",
+                "modality": "audio",
+                "unit": "amplitude_unit",
+                "feature_value": 45.0,
+                "window_start": "2026-10-01T19:01:59+08:00",
+                "window_end": "2026-10-01T19:02:04+08:00",
+                "reference_values": [
+                  50.0,
+                  55.0,
+                  60.0
+                ],
+                "reference_observations": [
+                  {
+                    "observation": {
+                      "window_start": "2026-10-01T18:35:00+08:00",
+                      "window_end": "2026-10-01T18:35:05+08:00",
+                      "value": 50.0,
+                      "unavailable_reason": null
+                    },
+                    "included": true,
+                    "status": "valid"
+                  },
+                  {
+                    "observation": {
+                      "window_start": "2026-10-01T18:45:00+08:00",
+                      "window_end": "2026-10-01T18:45:05+08:00",
+                      "value": 55.0,
+                      "unavailable_reason": null
+                    },
+                    "included": true,
+                    "status": "valid"
+                  },
+                  {
+                    "observation": {
+                      "window_start": "2026-10-01T18:55:00+08:00",
+                      "window_end": "2026-10-01T18:55:05+08:00",
+                      "value": 60.0,
+                      "unavailable_reason": null
+                    },
+                    "included": true,
+                    "status": "valid"
+                  }
+                ],
+                "mu": 55.0,
+                "sigma": 4.08248290463863,
+                "d": -1,
+                "q": 1,
+                "eta": 1.0,
+                "z": 2.449489736783178,
+                "u": 2.449489736783178,
+                "status": "available",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "speech_rate",
+                "modality": "audio",
+                "unit": "characters_per_second",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": -1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "fundamental_frequency",
+                "modality": "audio",
+                "unit": "Hz",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "pause_ratio",
+                "modality": "audio",
+                "unit": "ratio",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "pitch_perturbation",
+                "modality": "audio",
+                "unit": "ratio",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "sigh_count",
+                "modality": "audio",
+                "unit": "count",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "gaze_aversion_ratio",
+                "modality": "video",
+                "unit": "ratio",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "head_down_ratio",
+                "modality": "video",
+                "unit": "ratio",
+                "feature_value": null,
+                "window_start": "2026-10-01T19:01:59+08:00",
+                "window_end": "2026-10-01T19:02:04+08:00",
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "extraction_unavailable",
+                "current_unavailable_reason": "simulated_no_face"
+              },
+              {
+                "feature_name": "mouth_corner_position",
+                "modality": "video",
+                "unit": "ratio",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": -1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "facial_action_score",
+                "modality": "video",
+                "unit": "score",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              }
+            ],
+            "extractor_id": null
+          },
+          "S4": {
+            "H": 0.3782837201769513,
+            "branch": "multimodal"
+          }
+        },
+        {
+          "S2": {
+            "message": {
+              "platform": "synthetic-chat",
+              "conversation_id": "class-demo",
+              "message_id": "oct01-reply-2",
+              "sender_id": "同学丙",
+              "timestamp": "2026-10-01T19:03:00+08:00",
+              "text": "我没事，刚才小组练习那句没关系",
+              "reply_to_message_id": null,
+              "quoted_message_id": "oct01-attack-2",
+              "mention_ids": [
+                "同学乙"
+              ],
+              "target_user_ids": [],
+              "audio_path": null,
+              "video_path": null,
+              "media_start": null,
+              "media_end": null,
+              "source_type": "synthetic",
+              "consent_status": "synthetic"
+            },
+            "L": 1,
+            "Q": 1,
+            "S": 0.35508851838008554,
+            "T": 0.8187307530779818,
+            "D": 0,
+            "G": 1,
+            "delta_t_minutes": 2.0,
+            "logit": 1.9173446739028916,
+            "A": 0.8718420376292756,
+            "tau_A": 0.7,
+            "effective": true,
+            "reason": "at_or_above_threshold",
+            "feature_sources": {
+              "L": "scoped_reply_or_quote_metadata",
+              "Q": "scoped_mention_metadata",
+              "S": "sentence_bert",
+              "T": "utc_elapsed_minutes",
+              "D": "qwen_2_5_7b_instruct",
+              "G": "qwen_2_5_7b_instruct"
+            },
+            "matched_reference_ids": [
+              "oct01-attack-2"
+            ],
+            "matched_mentions": [
+              "同学乙"
+            ],
+            "matched_reference_cues": [],
+            "demo_topic_cosine": null,
+            "llm_status": "available",
+            "llm_reasons": []
+          },
+          "S3_masking": {
+            "labels": [
+              "否认",
+              "弱化",
+              "合理化",
+              "自嘲",
+              "迎合",
+              "反向积极Emoji",
+              "回避",
+              "话题转移"
+            ],
+            "p": [
+              0.4877141477532461,
+              0.00993243620349482,
+              0.0005303677379568603,
+              0.019973350039860015,
+              0.15796003428726527,
+              0.14789146889048205,
+              0.0014447303579591811,
+              0.000981295122181842
+            ],
+            "non_model_score": null,
+            "M": 0.10330347879905577,
+            "inference_source": "trained_linear_head",
+            "model_status": "available",
+            "matched_phrases": {},
+            "model_version": "synthetic_training_demo-773e724a80f1f413ea5c",
+            "training_data_source": "synthetic_training_demo",
+            "unavailable_reason": null
+          },
+          "S3_nonverbal": {
+            "N": null,
+            "status": "unavailable",
+            "inference_source": "no_nonverbal_input",
+            "weighted_deviation_sum": 0.0,
+            "available_weight_sum": 0.0,
+            "features": [
+              {
+                "feature_name": "voice_rms",
+                "modality": "audio",
+                "unit": "amplitude_unit",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": -1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "speech_rate",
+                "modality": "audio",
+                "unit": "characters_per_second",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": -1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "fundamental_frequency",
+                "modality": "audio",
+                "unit": "Hz",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "pause_ratio",
+                "modality": "audio",
+                "unit": "ratio",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "pitch_perturbation",
+                "modality": "audio",
+                "unit": "ratio",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "sigh_count",
+                "modality": "audio",
+                "unit": "count",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "gaze_aversion_ratio",
+                "modality": "video",
+                "unit": "ratio",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "head_down_ratio",
+                "modality": "video",
+                "unit": "ratio",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "mouth_corner_position",
+                "modality": "video",
+                "unit": "ratio",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": -1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              },
+              {
+                "feature_name": "facial_action_score",
+                "modality": "video",
+                "unit": "score",
+                "feature_value": null,
+                "window_start": null,
+                "window_end": null,
+                "reference_values": [],
+                "reference_observations": [],
+                "mu": null,
+                "sigma": null,
+                "d": 1,
+                "q": 0,
+                "eta": 1.0,
+                "z": null,
+                "u": null,
+                "status": "missing_current_observation",
+                "current_unavailable_reason": null
+              }
+            ],
+            "extractor_id": null
+          },
+          "S4": {
+            "H": 0.045032157725180724,
+            "branch": "text"
+          }
+        },
+        {
+          "S2": {
+            "message": {
+              "platform": "synthetic-chat",
+              "conversation_id": "class-demo",
+              "message_id": "oct01-other-topic",
+              "sender_id": "同学丙",
+              "timestamp": "2026-10-01T19:05:00+08:00",
+              "text": "明天几点交数学作业？",
+              "reply_to_message_id": null,
+              "quoted_message_id": null,
+              "mention_ids": [],
+              "target_user_ids": [],
+              "audio_path": null,
+              "video_path": null,
+              "media_start": null,
+              "media_end": null,
+              "source_type": "synthetic",
+              "consent_status": "synthetic"
+            },
+            "L": 0,
+            "Q": 0,
+            "S": 0.3820095463369243,
+            "T": 0.6703200460356393,
+            "D": 0,
+            "G": 0,
+            "delta_t_minutes": 4.0,
+            "logit": -1.1393965167743074,
+            "A": 0.24243117847225662,
+            "tau_A": 0.7,
+            "effective": false,
+            "reason": "below_threshold",
+            "feature_sources": {
+              "L": "scoped_reply_or_quote_metadata",
+              "Q": "scoped_mention_metadata",
+              "S": "sentence_bert",
+              "T": "utc_elapsed_minutes",
+              "D": "qwen_2_5_7b_instruct",
+              "G": "qwen_2_5_7b_instruct"
+            },
+            "matched_reference_ids": [],
+            "matched_mentions": [],
+            "matched_reference_cues": [],
+            "demo_topic_cosine": null,
+            "llm_status": "available",
+            "llm_reasons": []
+          },
+          "S3_masking": null,
+          "S3_nonverbal": null,
+          "S4": null
+        }
+      ],
+      "excluded_during_event_message_keys": [
+        [
+          "synthetic-chat",
+          "class-demo",
+          "oct01-during-event"
+        ]
+      ],
+      "S4": {
+        "H": 0.3782837201769513,
+        "status": "calculated",
+        "representative_reply_id": "oct01-reply-1",
+        "representative_reply_key": [
+          "synthetic-chat",
+          "class-demo",
+          "oct01-reply-1"
+        ],
+        "pattern_vector": [
+          0.00968072991334998,
+          0.7192463190387891,
+          0.8417960752992891,
+          0.0034947324603976124,
+          0.00026920724671205203,
+          0.1255151304790366,
+          0.0014782721405608578,
+          0.0011767833563072739,
+          0.9136623677067808
+        ],
+        "pattern_source": "synthetic_training_demo-773e724a80f1f413ea5c",
+        "pattern_n": 0.9136623677067808,
+        "representative_reply_time": "2026-10-01T11:02:00+00:00"
+      },
+      "S5": {
+        "P": 0.0,
+        "P_status": "insufficient_history",
+        "F": 0.0,
+        "n_i": 0,
+        "recent_event_ids": [],
+        "qualifying_pattern_count_including_current": 1,
+        "comparisons": [],
+        "numerator": null,
+        "denominator": null
+      },
+      "S6": {
+        "U": 0.28207093004423783,
+        "score_level": "重点关注",
+        "risk_level": "重点关注",
+        "status": "calculated",
+        "safety_override": false,
+        "human_review_required": false,
+        "safety_source": "engineering_keyword_baseline",
+        "safety_signals": [],
+        "allowed_strategies": [
+          "渐进式提问",
+          "鼓励表达"
+        ],
+        "support_source": "qwen_2_5_7b_instruct",
+        "empathy_reply": "同学丙，刚才发生的事情让你感觉怎么样？",
+        "support_strategy": {
+          "goal": "帮助同学丙缓解情绪，鼓励其表达感受",
+          "approach": [
+            "渐进式提问",
+            "鼓励表达"
+          ],
+          "steps": [
+            {
+              "action": "渐进式提问",
+              "text": "同学丙，刚才发生的事情让你感觉怎么样？"
+            },
+            {
+              "action": "鼓励表达",
+              "text": "你可以告诉我更多关于你的感受，我会倾听的。"
+            },
+            {
+              "action": "渐进式提问",
+              "text": "你觉得这次经历对你有什么影响？"
+            },
+            {
+              "action": "鼓励表达",
+              "text": "你有什么想法或需要帮助的地方吗？"
+            }
+          ]
+        },
+        "support_status": "available"
+      },
+      "S7": {
+        "status": "sqlite_saved",
+        "persisted": true,
+        "processed_utc": "2026-11-18T08:44:31.404446+00:00"
+      }
+    }
+  ]
+}
